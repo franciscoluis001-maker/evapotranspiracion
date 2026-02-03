@@ -1,0 +1,6 @@
+*******NODO SENSOR******
+python3 -m venv sensor-env
+source sensor-env/bin/activate
+******NODO COORDINADOR******
+python3 -m venv venv
+source venv/bin/activate
