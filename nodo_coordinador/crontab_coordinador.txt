@@ -1,0 +1,7 @@
+@reboot /bin/bash -lc 'sleep 60 && /usr/bin/flock -n /tmp/coordinador.lock -c "/home/luis/coordinador/run_coordinador.sh"' >> /home/luis/log_coordinador.log 2>&1
+
+
+@reboot /bin/bash -lc 'sleep 70 && cd /home/luis && /usr/bin/flock -n /tmp/et0.lock -c "/home/luis/venv/bin/python3 /home/luis/coordinador/calcular_et0_diaria.py"' >> /home/luis/log_et0.log 2>&1
+0 0 * * * /bin/bash -lc 'cd /home/luis && /usr/bin/flock -n /tmp/et0.lock -c "/home/luis/venv/bin/python3 /home/luis/coordinador/calcular_et0_diaria.py"' >> /home/luis/log_et0.log 2>&1
+
+55 23 * * * /usr/bin/python3 /home/luis/coordinador/calcular_et0_diaria.py >> /home/luis/coordinador/log_et0_diaria.log 2>&1
